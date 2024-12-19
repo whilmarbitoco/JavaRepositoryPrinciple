@@ -11,8 +11,8 @@ public class Database {
 
     private static final String DB_PROPERTIES_FILE = "src/config/db.properties";
 
-    public static Connection connection() {
-        try {
+    public static Connection connection() throws SQLException {
+
             Properties properties = new Properties();
             String url = null;
             String username = null;
@@ -32,8 +32,6 @@ public class Database {
             }
 
             return DriverManager.getConnection(url, username, password);
-        } catch (SQLException e) {
-            throw new RuntimeException("Unable to connect to the database");
-        }
+
     }
 }
